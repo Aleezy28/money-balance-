@@ -1,0 +1,177 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@source "../node_modules/@tremor";
+@source inline("bg-{blue,emerald,indigo,cyan,amber,rose,violet,teal,slate,gray,zinc,green,red,orange}-500 dark:bg-{blue,emerald,indigo,cyan,amber,rose,violet,teal,slate,gray,zinc,green,red,orange}-500 text-{blue,emerald,indigo,cyan,amber,rose,violet,teal,slate}-500 stroke-{blue,emerald,indigo,cyan,amber,rose,violet,teal,slate}-500 fill-{blue,emerald,indigo,cyan,amber,rose,violet,teal,slate}-500");
+
+@theme {
+  /* Tremor Light Tokens */
+  --color-tremor-brand-faint: #eff6ff;
+  --color-tremor-brand-muted: #bfdbfe;
+  --color-tremor-brand-subtle: #60a5fa;
+  --color-tremor-brand: #2563eb;
+  --color-tremor-brand-emphasis: #1d4ed8;
+  --color-tremor-brand-inverted: #ffffff;
+
+  --color-tremor-background-muted: #f8fafc;
+  --color-tremor-background-subtle: #f1f5f9;
+  --color-tremor-background: #ffffff;
+  --color-tremor-background-emphasis: #334155;
+
+  --color-tremor-border: #e2e8f0;
+  --color-tremor-ring: #e2e8f0;
+
+  --color-tremor-content-subtle: #64748b;
+  --color-tremor-content: #475569;
+  --color-tremor-content-emphasis: #0f172a;
+  --color-tremor-content-strong: #020617;
+  --color-tremor-content-inverted: #ffffff;
+
+  /* Tremor Dark Tokens (Obsidian Hierarchy) */
+  --color-dark-tremor-brand-faint: rgba(37, 99, 235, 0.14);
+  --color-dark-tremor-brand-muted: #1e3a8a;
+  --color-dark-tremor-brand-subtle: #3b82f6;
+  --color-dark-tremor-brand: #3b82f6;
+  --color-dark-tremor-brand-emphasis: #60a5fa;
+  --color-dark-tremor-brand-inverted: #09090b;
+
+  --color-dark-tremor-background-muted: #09090b;
+  --color-dark-tremor-background-subtle: #18181b;
+  --color-dark-tremor-background: #111114;
+  --color-dark-tremor-background-emphasis: #e4e4e7;
+
+  --color-dark-tremor-border: rgba(255, 255, 255, 0.08);
+  --color-dark-tremor-ring: rgba(255, 255, 255, 0.08);
+
+  --color-dark-tremor-content-subtle: #71717a;
+  --color-dark-tremor-content: #a1a1aa;
+  --color-dark-tremor-content-emphasis: #f4f4f5;
+  --color-dark-tremor-content-strong: #ffffff;
+  --color-dark-tremor-content-inverted: #09090b;
+
+  /* Tremor Shadows & Radii */
+  --shadow-tremor-input: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-tremor-card: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-tremor-dropdown: 0 10px 25px -5px rgb(0 0 0 / 0.12), 0 4px 10px -6px rgb(0 0 0 / 0.08);
+
+  --shadow-dark-tremor-input: 0 1px 2px 0 rgb(0 0 0 / 0.35);
+  --shadow-dark-tremor-card: 0 10px 30px -12px rgb(0 0 0 / 0.55);
+  --shadow-dark-tremor-dropdown: 0 16px 32px -8px rgb(0 0 0 / 0.7);
+
+  --radius-tremor-small: 0.5rem;
+  --radius-tremor-default: 0.875rem;
+  --radius-tremor-full: 9999px;
+
+  --text-tremor-label: 0.75rem;
+  --text-tremor-default: 0.875rem;
+  --text-tremor-title: 1.0625rem;
+  --text-tremor-metric: 1.75rem;
+}
+
+@layer base {
+  html {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Subtle architectural grain overlay */
+.bg-grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Skeleton shimmer */
+@keyframes shimmerSlide {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.08) 25%,
+    rgba(148, 163, 184, 0.18) 50%,
+    rgba(148, 163, 184, 0.08) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSlide 1.6s infinite linear;
+}
+
+/* Tactile 3D dimensional wallet card */
+.wallet-card-3d {
+  transform-style: preserve-3d;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wallet-card-3d:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wallet-card-3d:hover {
+    transform: none;
+  }
+  .skeleton-shimmer {
+    animation: none;
+  }
+}
+
+/* Tailwind v4 polyfill for @tremor/react BarList bg-opacity-40 so bars stay vivid without hiding labels */
+.tremor-BarList-bar .bg-blue-500 {
+  background-color: color-mix(in oklab, var(--color-blue-500) 22%, transparent);
+}
+.tremor-BarList-bar .bg-emerald-500 {
+  background-color: color-mix(in oklab, var(--color-emerald-500) 22%, transparent);
+}
+.tremor-BarList-bar .bg-indigo-500 {
+  background-color: color-mix(in oklab, var(--color-indigo-500) 22%, transparent);
+}
+.tremor-BarList-bar .bg-cyan-500 {
+  background-color: color-mix(in oklab, var(--color-cyan-500) 22%, transparent);
+}
+.tremor-BarList-bar .bg-amber-500 {
+  background-color: color-mix(in oklab, var(--color-amber-500) 22%, transparent);
+}
+.tremor-BarList-bar .bg-rose-500 {
+  background-color: color-mix(in oklab, var(--color-rose-500) 22%, transparent);
+}
+.tremor-BarList-bar .bg-violet-500 {
+  background-color: color-mix(in oklab, var(--color-violet-500) 22%, transparent);
+}
+.tremor-BarList-bar .bg-teal-500 {
+  background-color: color-mix(in oklab, var(--color-teal-500) 22%, transparent);
+}
+
+.dark .tremor-BarList-bar .bg-blue-500 {
+  background-color: color-mix(in oklab, var(--color-blue-500) 38%, transparent);
+}
+.dark .tremor-BarList-bar .bg-emerald-500 {
+  background-color: color-mix(in oklab, var(--color-emerald-500) 38%, transparent);
+}
+.dark .tremor-BarList-bar .bg-indigo-500 {
+  background-color: color-mix(in oklab, var(--color-indigo-500) 38%, transparent);
+}
+.dark .tremor-BarList-bar .bg-cyan-500 {
+  background-color: color-mix(in oklab, var(--color-cyan-500) 38%, transparent);
+}
+.dark .tremor-BarList-bar .bg-amber-500 {
+  background-color: color-mix(in oklab, var(--color-amber-500) 38%, transparent);
+}
+.dark .tremor-BarList-bar .bg-rose-500 {
+  background-color: color-mix(in oklab, var(--color-rose-500) 38%, transparent);
+}
+.dark .tremor-BarList-bar .bg-violet-500 {
+  background-color: color-mix(in oklab, var(--color-violet-500) 38%, transparent);
+}
+.dark .tremor-BarList-bar .bg-teal-500 {
+  background-color: color-mix(in oklab, var(--color-teal-500) 38%, transparent);
+}
+

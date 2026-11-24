@@ -1,0 +1,6 @@
+{
+  "name": "ClearLedger",
+  "description": "Personal Expense & Budget Tracker with category budgets, monthly cashflow analytics, and transaction management.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
